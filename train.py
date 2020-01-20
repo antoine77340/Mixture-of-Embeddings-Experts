@@ -144,10 +144,10 @@ if args.MSRVTT:
     test_list_path = os.path.join(root_feat,'test_list.txt')
 
     dataset = MSR.MSRVTT(visual_feat_path, flow_feat_path, text_feat_path,
-            audio_feat_path, face_feat_path, train_list_path,test_list_path, coco=args.coco) 
-    msr_sampler = MSRSampler(dataset.n_MSR, dataset.n_coco, args.coco_sampling_rate)
+            audio_feat_path, face_feat_path, train_list_path,test_list_path, coco=args.coco)
     
     if args.coco:
+        msr_sampler = MSRSampler(dataset.n_MSR, dataset.n_coco, args.coco_sampling_rate)
         dataloader = DataLoader(dataset, batch_size=args.batch_size,
                 sampler=msr_sampler, num_workers=1,collate_fn=dataset.collate_data, drop_last=True)
     else:
